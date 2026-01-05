@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbo Art Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="imgs/Red-Apple-Cleaned.png">
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="showPage('home')">
+            <img src="imgs/Red-Apple-Cleaned.png" alt="Limbo Art Studio Logo" class="logo-icon">
+            <span>Limbo Art Studio</span>
+        </div>
+
+        <nav>
+            <a href="#" onclick="showPage('gallery'); return false;">Gallery</a>
+            <a href="#" onclick="showPage('info'); return false;">Info</a>
+            <a href="#" onclick="showPage('registry'); return false;">Registry</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="home-container">
+                <!-- NOTES, IF NEED TITLE IT IS HERE BELOW -->
+                <!-- <h1 class="home-title">LIMBO ART STUDIO</h1> -->
+
+                <!-- Desktop interactive apple field -->
+                <div class="apple-field desktop-only" id="appleField" aria-label="Interactive apple field"></div>
+
+                <!-- Mobile fallback image -->
+                <img
+                    src="imgs/Red-Apple-Cleaned.png"
+                    class="mobile-only mobile-hero"
+                    alt="Limbo Art Studio">
+            </div>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery" class="page">
+            <div class="gallery-container">
+                <div class="gallery-filter">
+                    <select id="artistFilter" onchange="filterGallery(this.value)">
+                        <option value="all">All</option>
+                        <option value="gabriel-palau">Gabriel Palau</option>
+                        <option value="silvestre-madera">Silvestre Madera</option>
+                    </select>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-artist="gabriel-palau" onclick="showArtwork(1)">
+                        <img src="imgs/ladama2.jpg" alt="La Dama" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">La Dama</div>
+                    </div>
+                    <div class="gallery-item" data-artist="gabriel-palau" onclick="showArtwork(2)">
+                        <img src="imgs/nadapersonal2.JPG" alt="Nada Personal" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Nada Personal</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(3)">
+                        <img src="imgs/Polilla.jpeg" alt="Polilla" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Polilla</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(4)">
+                        <img src="imgs/Pugna.jpeg" alt="Pugna" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Pugna</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(5)">
+                        <img src="imgs/VueloInterno.jpeg" alt="Vuelo Interno" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Vuelo Interno</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(6)">
+                        <img src="imgs/SoldadoCaído.jpeg" alt="Soldado Caído" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Soldado Caído</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(7)">
+                        <img src="imgs/MiradaEnRuinas.jpeg" alt="Mirada en Ruinas" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Mirada en Ruinas</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(8)">
+                        <img src="imgs/Gallardía.jpeg" alt="Gallardía" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Gallardía</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(9)">
+                        <img src="imgs/ensueño.jpeg" alt="Ensueño" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Ensueño</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(10)">
+                        <img src="imgs/El-Incrédulo.jpeg" alt="El Incrédulo" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">El Incrédulo</div>
+                    </div>
+                    <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(11)">
+                        <img src="imgs/Reino-Fungi.jpeg" alt="Reino Fungi" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">Reino Fungi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Page -->
+        <div id="info" class="page">
+            <div class="info-container">
+                <div class="info-section">
+                    <h2>About Us</h2>
+                    <p>Limbo Art Studio is a contemporary art space dedicated to exploring the boundaries between reality and imagination. Our collection features works that challenge perception and invite viewers into contemplative spaces.</p>
+                    <p>Our studio serves as both a gallery and a creative laboratory, where artists are encouraged to experiment with new forms and push the boundaries of their practice.</p>
+                </div>
+
+                <div class="info-section contact-info">
+                    <h2>Contact</h2>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/limbo_art_studio" target="_blank">@LimboArtStudio</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registry Page -->
+        <div id="registry" class="page">
+            <div class="registry-container">
+                <h2>Collector Registry</h2>
+                <p class="registry-intro">Thank you for becoming part of the Limbo Art Studio collection. Please register your acquisition below so we can keep you informed about new works, exhibitions, and exclusive events.</p>
+
+                <div id="successMessage" class="success-message">
+                    <strong>Thank you for registering!</strong><br>
+                    Your information has been recorded. We'll be in touch soon with updates about our latest works and upcoming exhibitions.
+                </div>
+
+                <form id="registryForm">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="collectorName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="collectorEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number <span class="optional">(optional)</span></label>
+                        <input type="tel" id="collectorPhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Artwork Purchased *</label>
+                        <select id="artworkPurchased" required>
+                            <option value="">Select an artwork</option>
+                            <option value="La Dama">La Dama</option>
+                            <option value="Nada Personal">Nada Personal</option>
+                            <option value="Polilla">Polilla</option>
+                            <option value="Pugna">Pugna</option>
+                            <option value="Vuelo Interno">Vuelo Interno</option>
+                            <option value="Soldado Caído">Soldado Caído</option>
+                            <option value="Mirada en Ruinas">Mirada en Ruinas</option>
+                            <option value="Gallardía">Gallardía</option>
+                            <option value="Ensueño">Ensueño</option>
+                            <option value="El Incrédulo">El Incrédulo</option>
+                            <option value="Reino Fungi">Reino Fungi</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Purchase Date *</label>
+                        <input type="date" id="purchaseDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Notes <span class="optional">(optional)</span></label>
+                        <textarea id="additionalNotes" placeholder="How did you discover us? What drew you to this piece?"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Registration</button>
+                </form>
+
+                <div class="collector-list" id="collectorList" style="display: none;">
+                    <h3>Registered Collectors</h3>
+                    <div id="collectorItems"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artwork Detail Pages -->
+        <div id="artwork-1" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/ladama2.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>La Dama</h1>
+                        <p class="artist-name">Gabriel Palau</p>
+                        <div class="artwork-meta">
+                            <p>Acrylic on Canvas, 2025</p>
+                            <p>48" × 36"</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/ladama1.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladama3.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-2" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/nadapersonal4.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Nada Personal</h1>
+                        <p class="artist-name">Gabriel Palau</p>
+                        <div class="artwork-meta">
+                            <p>Acrylic on Canvas, 2024</p>
+                            <p>60" × 40"</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/nadapersonal1.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/nadapersonal2.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/nadapersonal3.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-3" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/Polilla.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Polilla</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Watercolor and ink on paper, 2022</p>
+                            <p>50 x 40 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/Polilla.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-4" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/Pugna.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Pugna</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Acrylic on canvas, 2021</p>
+                            <p>120 x 90 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/Pugna.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-5" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/VueloInterno.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Vuelo Interno</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Oil on canvas, 2021</p>
+                            <p>150 x 150 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/VueloInterno.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-6" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/SoldadoCaído.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Soldado Caído</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Ink and watercolor on paper, 2022</p>
+                            <p>50 x 35 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/SoldadoCaído.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-7" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/MiradaEnRuinas.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Mirada en Ruinas</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Oil on canvas, 2023</p>
+                            <p>150 x 130 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/MiradaEnRuinas.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-8" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/Gallardía.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Gallardía</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Watercolor and ink on paper, 2025</p>
+                            <p>50 x 40 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/Gallardía.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-9" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/ensueño.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Ensueño</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Watercolor and ink on paper, 2025</p>
+                            <p>50 x 40 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/ensueño.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-10" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/El-Incrédulo.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>El Incrédulo</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Oil on canvas, 2022</p>
+                            <p>120 x 100 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/El-Incrédulo.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-11" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/Reino-Fungi.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>Reino Fungi</h1>
+                        <p class="artist-name">Silvestre Madera</p>
+                        <div class="artwork-meta">
+                            <p>Oil on canvas, 2024</p>
+                            <p>120 x 120 cm</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/Reino-Fungi.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-copyright">
+            Limbo Art Studio.
+        </div>
+        <div class="footer-social">
+            <span>Follow us</span>
+            <a href="https://instagram.com/limbo_art_studio" target="_blank">@LimboArtStudio</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
