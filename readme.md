@@ -394,7 +394,7 @@ Wijaya, A., Kefry, Wihalim, W., & Gunawan, A. A. S. (2021). The Effect of UI/UX 
 ## Connect
 
 **Project Link:** [https://github.com/shaan11s](#)  
-**Live Demo:** [TheLimboArtStudio.com](#)  
+**Live Demo:** [LimboArtStudio.com](#)  
 **Contact:** [@LimboArtStudio](https://instagram.com/limbo_art_studio)
 
 ---
