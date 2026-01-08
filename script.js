@@ -200,8 +200,8 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
         'imgs/nadapersonal2.JPG',
         'imgs/Pugna.jpeg',
         'imgs/VueloInterno.jpeg',
-        'imgs/ensueño.jpeg',
-        'imgs/El-Incrédulo.jpeg',
+        'imgs/ensueno.jpeg',
+        'imgs/El-Incredulo.jpeg',
         'imgs/Reino-Fungi.jpeg'
     ];
 
