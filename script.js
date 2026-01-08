@@ -191,15 +191,15 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     // Array of artwork images
     // HEY THE HOME PAGE PIXEL ERASER THINGY IS HERE 
     // CHANGE UR PHOTOS HERE 
+          //  'imgs/Polilla.jpeg',
+        //    'imgs/SoldadoCaído.jpeg',
+       // 'imgs/MiradaEnRuinas.jpeg',
+       // 'imgs/Gallardía.jpeg',
     const artworks = [
         'imgs/ladama2.jpg',
         'imgs/nadapersonal2.JPG',
-      //  'imgs/Polilla.jpeg',
         'imgs/Pugna.jpeg',
         'imgs/VueloInterno.jpeg',
-    //    'imgs/SoldadoCaído.jpeg',
-       // 'imgs/MiradaEnRuinas.jpeg',
-       // 'imgs/Gallardía.jpeg',
         'imgs/ensueño.jpeg',
         'imgs/El-Incrédulo.jpeg',
         'imgs/Reino-Fungi.jpeg'
