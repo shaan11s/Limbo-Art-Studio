@@ -1,16 +1,44 @@
-// Page Navigation
-function showPage(pageId) {
+// Page Navigation with History API support
+function showPage(pageId, addToHistory = true) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => {
         page.classList.remove('active');
     });
     document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
+
+    // Update browser URL without reloading the page
+    if (addToHistory) {
+        const url = pageId === 'home' ? '/' : `/#${pageId}`;
+        history.pushState({ page: pageId }, '', url);
+    }
 }
 
 function showArtwork(artworkId) {
     showPage('artwork-' + artworkId);
 }
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.page) {
+        showPage(event.state.page, false);
+    } else {
+        // If no state, check URL hash or default to home
+        const hash = window.location.hash.slice(1);
+        showPage(hash || 'home', false);
+    }
+});
+
+// Handle initial page load with hash
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+        showPage(hash, false);
+    } else {
+        // Set initial state for home page
+        history.replaceState({ page: 'home' }, '', '/');
+    }
+});
 
 // Gallery Filter
 function filterGallery(artist) {
