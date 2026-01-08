@@ -1,4 +1,4 @@
-// Page Navigation with History API support
+// Page Navigation with History API support.
 function showPage(pageId, addToHistory = true) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => {
