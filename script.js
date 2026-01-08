@@ -192,9 +192,9 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     // HEY THE HOME PAGE PIXEL ERASER THINGY IS HERE 
     // CHANGE UR PHOTOS HERE 
           //  'imgs/Polilla.jpeg',
-        //    'imgs/SoldadoCaído.jpeg',
+        //    'imgs/SoldadoCaido.jpeg',
        // 'imgs/MiradaEnRuinas.jpeg',
-       // 'imgs/Gallardía.jpeg',
+       // 'imgs/Gallardia.jpeg',
     const artworks = [
         'imgs/ladama2.jpg',
         'imgs/nadapersonal2.JPG',
