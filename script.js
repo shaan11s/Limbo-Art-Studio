@@ -189,20 +189,21 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     let limboMask = null;
 
     // Array of artwork images
-    // HEY THE HOME PAGE PIXEL ERASER THINGY IS HERE 
-    // CHANGE UR PHOTOS HERE 
-          //  'imgs/Polilla.jpeg',
-        //    'imgs/SoldadoCaido.jpeg',
-       // 'imgs/MiradaEnRuinas.jpeg',
-       // 'imgs/Gallardia.jpeg',
+    // HEY THE HOME PAGE PIXEL ERASER THINGY IS HERE
+    // CHANGE UR PHOTOS HERE
     const artworks = [
-        'imgs/ladama2.jpg',
+        'imgs/ladamaA.JPG',
         'imgs/nadapersonal2.JPG',
+      //  'imgs/Polilla.jpeg',
         'imgs/Pugna.jpeg',
         'imgs/VueloInterno.jpeg',
-        'imgs/ensueno.jpeg',
-        'imgs/El-Incredulo.jpeg',
-        'imgs/Reino-Fungi.jpeg'
+    //    'imgs/SoldadoCaído.jpeg',
+       // 'imgs/MiradaEnRuinas.jpeg',
+       // 'imgs/Gallardía.jpeg',
+        'imgs/ensueño.jpeg',
+        'imgs/El-Incrédulo.jpeg',
+        'imgs/Reino-Fungi.jpeg',
+        'imgs/creature1.JPG'
     ];
 
     // Load and process random artwork image
