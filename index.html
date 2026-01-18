@@ -29,14 +29,8 @@
                 <!-- NOTES, IF NEED TITLE IT IS HERE BELOW -->
                 <!-- <h1 class="home-title">LIMBO ART STUDIO</h1> -->
 
-                <!-- Desktop interactive apple field -->
-                <div class="apple-field desktop-only" id="appleField" aria-label="Interactive apple field"></div>
-
-                <!-- Mobile fallback image -->
-                <img
-                    src="imgs/Red-Apple-Cleaned.png"
-                    class="mobile-only mobile-hero"
-                    alt="Limbo Art Studio">
+                <!-- Interactive apple field (works on both desktop and mobile) -->
+                <div class="apple-field" id="appleField" aria-label="Interactive apple field"></div>
             </div>
         </div>
 
@@ -52,7 +46,7 @@
                 </div>
                 <div class="gallery-grid">
                     <div class="gallery-item" data-artist="gabriel-palau" onclick="showArtwork(1)">
-                        <img src="imgs/ladama2.jpg" alt="La Dama" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamaA.JPG" alt="La Dama" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-title">La Dama</div>
                     </div>
                     <div class="gallery-item" data-artist="gabriel-palau" onclick="showArtwork(2)">
@@ -72,7 +66,7 @@
                         <div class="gallery-title">Vuelo Interno</div>
                     </div>
                     <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(6)">
-                        <img src="imgs/SoldadoCaído.jpeg" alt="Soldado Caído" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/SoldadoCaido.jpeg" alt="Soldado Caído" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-title">Soldado Caído</div>
                     </div>
                     <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(7)">
@@ -80,20 +74,24 @@
                         <div class="gallery-title">Mirada en Ruinas</div>
                     </div>
                     <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(8)">
-                        <img src="imgs/Gallardía.jpeg" alt="Gallardía" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/Gallardia.jpeg" alt="Gallardía" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-title">Gallardía</div>
                     </div>
                     <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(9)">
-                        <img src="imgs/ensueño.jpeg" alt="Ensueño" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ensueno.jpeg" alt="Ensueño" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-title">Ensueño</div>
                     </div>
                     <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(10)">
-                        <img src="imgs/El-Incrédulo.jpeg" alt="El Incrédulo" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/El-Incredulo.jpeg" alt="El Incrédulo" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-title">El Incrédulo</div>
                     </div>
                     <div class="gallery-item" data-artist="silvestre-madera" onclick="showArtwork(11)">
                         <img src="imgs/Reino-Fungi.jpeg" alt="Reino Fungi" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-title">Reino Fungi</div>
+                    </div>
+                    <div class="gallery-item" data-artist="gabriel-palau" onclick="showArtwork(12)">
+                        <img src="imgs/creature1.JPG" alt="A creature in my bloodstream, chews me up" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-title">A creature in my bloodstream, chews me up</div>
                     </div>
                 </div>
             </div>
@@ -167,6 +165,7 @@
                             <option value="Ensueño">Ensueño</option>
                             <option value="El Incrédulo">El Incrédulo</option>
                             <option value="Reino Fungi">Reino Fungi</option>
+                            <option value="A creature in my bloodstream, chews me up">A creature in my bloodstream, chews me up</option>
                         </select>
                     </div>
 
@@ -195,13 +194,13 @@
             <div class="artwork-detail">
                 <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
                 <div class="artwork-content">
-                    <img src="imgs/ladama2.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="imgs/ladamaA.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="artwork-info">
                         <h1>La Dama</h1>
                         <p class="artist-name">Gabriel Palau</p>
                         <div class="artwork-meta">
                             <p>Acrylic on Canvas, 2025</p>
-                            <p>48" × 36"</p>
+                            <p>48" × 60"</p>
                         </div>
                         <div class="artwork-description">
                             <!-- <p>Add artwork description here</p> -->
@@ -213,8 +212,15 @@
                 <div class="additional-images">
                     <h3>Behind the Canvas</h3>
                     <div class="additional-grid">
-                        <img src="imgs/ladama1.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
-                        <img src="imgs/ladama3.jpg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamab.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamac.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamad.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamae.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamaf.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamag.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamah.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamai.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ladamaj.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -338,7 +344,7 @@
             <div class="artwork-detail">
                 <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
                 <div class="artwork-content">
-                    <img src="imgs/SoldadoCaído.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="imgs/SoldadoCaido.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="artwork-info">
                         <h1>Soldado Caído</h1>
                         <p class="artist-name">Silvestre Madera</p>
@@ -356,7 +362,7 @@
                 <div class="additional-images">
                     <h3>Behind the Canvas</h3>
                     <div class="additional-grid">
-                        <img src="imgs/SoldadoCaído.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/SoldadoCaido.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -394,7 +400,7 @@
             <div class="artwork-detail">
                 <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
                 <div class="artwork-content">
-                    <img src="imgs/Gallardía.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="imgs/Gallardia.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="artwork-info">
                         <h1>Gallardía</h1>
                         <p class="artist-name">Silvestre Madera</p>
@@ -412,7 +418,7 @@
                 <div class="additional-images">
                     <h3>Behind the Canvas</h3>
                     <div class="additional-grid">
-                        <img src="imgs/Gallardía.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/Gallardia.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -422,7 +428,7 @@
             <div class="artwork-detail">
                 <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
                 <div class="artwork-content">
-                    <img src="imgs/ensueño.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="imgs/ensueno.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="artwork-info">
                         <h1>Ensueño</h1>
                         <p class="artist-name">Silvestre Madera</p>
@@ -440,7 +446,7 @@
                 <div class="additional-images">
                     <h3>Behind the Canvas</h3>
                     <div class="additional-grid">
-                        <img src="imgs/ensueño.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/ensueno.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -450,7 +456,7 @@
             <div class="artwork-detail">
                 <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
                 <div class="artwork-content">
-                    <img src="imgs/El-Incrédulo.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="imgs/El-Incredulo.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     <div class="artwork-info">
                         <h1>El Incrédulo</h1>
                         <p class="artist-name">Silvestre Madera</p>
@@ -468,7 +474,7 @@
                 <div class="additional-images">
                     <h3>Behind the Canvas</h3>
                     <div class="additional-grid">
-                        <img src="imgs/El-Incrédulo.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="imgs/El-Incredulo.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -497,6 +503,34 @@
                     <h3>Behind the Canvas</h3>
                     <div class="additional-grid">
                         <img src="imgs/Reino-Fungi.jpeg" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="artwork-12" class="page">
+            <div class="artwork-detail">
+                <a class="back-button" onclick="showPage('gallery'); return false;">← Back to Gallery</a>
+                <div class="artwork-content">
+                    <img src="imgs/creature1.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="artwork-info">
+                        <h1>A creature in my bloodstream, chews me up</h1>
+                        <p class="artist-name">Gabriel Palau</p>
+                        <div class="artwork-meta">
+                            <p>Acrylic on canvas</p>
+                            <p>48" × 60"</p>
+                        </div>
+                        <div class="artwork-description">
+                            <!-- <p>Add artwork description here</p> -->
+                            <!-- <p>Add additional details here</p> -->
+                            <p><strong>Price:</strong> Inquire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-images">
+                    <h3>Behind the Canvas</h3>
+                    <div class="additional-grid">
+                        <img src="imgs/creature2.JPG" alt="Limbo Art Studio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>

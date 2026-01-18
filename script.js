@@ -1,4 +1,4 @@
-// Page Navigation with History API support
+// Page Navigation with History API support.
 function showPage(pageId, addToHistory = true) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => {
@@ -172,9 +172,6 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     const field = document.getElementById('appleField');
     if (!field) return;
 
-    // Only run on devices with a mouse / trackpad
-    if (!window.matchMedia('(pointer: fine)').matches) return;
-
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     field.innerHTML = '';
@@ -189,18 +186,21 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     let limboMask = null;
 
     // Array of artwork images
+    // HEY THE HOME PAGE PIXEL ERASER THINGY IS HERE
+    // CHANGE UR PHOTOS HERE
+        //  'imgs/Polilla.jpeg',
+            //    'imgs/SoldadoCaído.jpeg',
+       // 'imgs/MiradaEnRuinas.jpeg',
+       // 'imgs/Gallardía.jpeg',
     const artworks = [
-        'imgs/ladama2.jpg',
+        'imgs/ladamaA.JPG',
         'imgs/nadapersonal2.JPG',
-        'imgs/Polilla.jpeg',
         'imgs/Pugna.jpeg',
         'imgs/VueloInterno.jpeg',
-        'imgs/SoldadoCaído.jpeg',
-        'imgs/MiradaEnRuinas.jpeg',
-        'imgs/Gallardía.jpeg',
-        'imgs/ensueño.jpeg',
-        'imgs/El-Incrédulo.jpeg',
-        'imgs/Reino-Fungi.jpeg'
+        'imgs/ensueno.jpeg',
+        'imgs/El-Incredulo.jpeg',
+        'imgs/Reino-Fungi.jpeg',
+        'imgs/creature1.JPG'
     ];
 
     // Load and process random artwork image
@@ -337,7 +337,28 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
         mouse.y = -1000;
     });
 
-    // Reset on click
+    // Touch tracking (for mobile)
+    field.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // Prevent scrolling while interacting
+        const rect = field.getBoundingClientRect();
+        const touch = e.touches[0];
+        mouse.x = touch.clientX - rect.left;
+        mouse.y = touch.clientY - rect.top;
+    }, { passive: false });
+
+    field.addEventListener('touchstart', (e) => {
+        const rect = field.getBoundingClientRect();
+        const touch = e.touches[0];
+        mouse.x = touch.clientX - rect.left;
+        mouse.y = touch.clientY - rect.top;
+    });
+
+    field.addEventListener('touchend', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+
+    // Reset on click/tap
     field.addEventListener('click', () => {
         particles.forEach(p => p.erased = false);
     });

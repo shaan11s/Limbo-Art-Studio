@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* Default (desktop): show interactive, hide mobile fallback */
+/* Desktop/mobile visibility helpers (no longer needed for apple-field) */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
@@ -104,10 +104,17 @@ main {
     letter-spacing: 1px;
 }
 
-/* === Apple Repel Feature (Desktop) + Mobile Fallback === */
+/* === Mobile Visibility Helpers === */
 @media (max-width: 768px) {
   .desktop-only { display: none; }
   .mobile-only { display: block; }
+}
+
+/* Apple field responsive sizing for mobile */
+@media (max-width: 768px) {
+  .apple-field {
+    height: 500px;
+  }
 }
 
 
@@ -194,7 +201,7 @@ main {
     display: flex;
     align-items: center;
     margin-bottom: 3rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .gallery-filter select {
@@ -225,14 +232,17 @@ main {
 }
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    column-count: 2;
+    column-gap: 3rem;
 }
 
 .gallery-item {
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    break-inside: avoid;
+    margin-bottom: 3rem;
+    display: inline-block;
+    width: 100%;
 }
 
 .gallery-item:hover {
@@ -247,6 +257,7 @@ main {
     width: 100%;
     height: auto;
     display: block;
+    margin-bottom: 1rem;
 }
 
 .gallery-image {
@@ -577,7 +588,7 @@ footer {
     }
 
     .gallery-grid {
-        grid-template-columns: 1fr;
+        column-count: 1;
         gap: 2rem;
     }
 
@@ -602,10 +613,3 @@ footer {
     .mobile-only { display: block; }
 }
 
-/* FIX THIS LATER, ITS A TEMP FIX*/
-
-.mobile-only { display: none !important; }
-
-@media (max-width: 768px) {
-  .mobile-only { display: block !important; }
-}
