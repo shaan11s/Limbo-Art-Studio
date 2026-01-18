@@ -328,34 +328,35 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     }
 
     // Mouse tracking
-    field.addEventListener('mousemove', (e) => {
-        const rect = field.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) * (canvas.width / rect.width);
+        mouse.y = (e.clientY - rect.top) * (canvas.height / rect.height);
     });
 
-    field.addEventListener('mouseleave', () => {
+    canvas.addEventListener('mouseleave', () => {
         mouse.x = -1000;
         mouse.y = -1000;
     });
 
     // Touch tracking (for mobile)
-    field.addEventListener('touchmove', (e) => {
+    canvas.addEventListener('touchmove', (e) => {
         e.preventDefault(); // Prevent scrolling while interacting
-        const rect = field.getBoundingClientRect();
+        const rect = canvas.getBoundingClientRect();
         const touch = e.touches[0];
-        mouse.x = touch.clientX - rect.left;
-        mouse.y = touch.clientY - rect.top;
+        mouse.x = (touch.clientX - rect.left) * (canvas.width / rect.width);
+        mouse.y = (touch.clientY - rect.top) * (canvas.height / rect.height);
     }, { passive: false });
 
-    field.addEventListener('touchstart', (e) => {
-        const rect = field.getBoundingClientRect();
+    canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
         const touch = e.touches[0];
-        mouse.x = touch.clientX - rect.left;
-        mouse.y = touch.clientY - rect.top;
-    });
+        mouse.x = (touch.clientX - rect.left) * (canvas.width / rect.width);
+        mouse.y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+    }, { passive: false });
 
-    field.addEventListener('touchend', () => {
+    canvas.addEventListener('touchend', () => {
         mouse.x = -1000;
         mouse.y = -1000;
     });
