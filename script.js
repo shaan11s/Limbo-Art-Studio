@@ -214,8 +214,8 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     };
 
     function setupCanvas() {
-        const maxWidth = field.getBoundingClientRect().width;
-        const maxHeight = field.getBoundingClientRect().height;
+        const maxWidth = window.innerWidth * 0.9;
+        const maxHeight = window.innerHeight * 0.85;
         const imgAspect = img.width / img.height;
 
         let canvasWidth = maxWidth;
