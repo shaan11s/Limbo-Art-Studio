@@ -182,7 +182,7 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     const eraseRadius = 60;
 
     let particles = [];
-    let mouse = { x: -1000, y: -1000 };
+    let mouse = { x: null, y: null };
     let limboMask = null;
 
     // Array of artwork images
@@ -300,7 +300,7 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         particles.forEach(p => {
-            if (!p.erased) {
+            if (!p.erased && mouse.x !== null && mouse.y !== null) {
                 // Check if cursor is near this particle
                 const dx = p.x - mouse.x;
                 const dy = p.y - mouse.y;
@@ -330,35 +330,35 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     // Mouse tracking
     canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
-        mouse.x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        mouse.y = (e.clientY - rect.top) * (canvas.height / rect.height);
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
     });
 
     canvas.addEventListener('mouseleave', () => {
-        mouse.x = -1000;
-        mouse.y = -1000;
+        mouse.x = null;
+        mouse.y = null;
     });
 
     // Touch tracking (for mobile)
-    canvas.addEventListener('touchmove', (e) => {
-        e.preventDefault(); // Prevent scrolling while interacting
-        const rect = canvas.getBoundingClientRect();
-        const touch = e.touches[0];
-        mouse.x = (touch.clientX - rect.left) * (canvas.width / rect.width);
-        mouse.y = (touch.clientY - rect.top) * (canvas.height / rect.height);
-    }, { passive: false });
-
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
         const rect = canvas.getBoundingClientRect();
         const touch = e.touches[0];
-        mouse.x = (touch.clientX - rect.left) * (canvas.width / rect.width);
-        mouse.y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+        mouse.x = touch.clientX - rect.left;
+        mouse.y = touch.clientY - rect.top;
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        mouse.x = touch.clientX - rect.left;
+        mouse.y = touch.clientY - rect.top;
     }, { passive: false });
 
     canvas.addEventListener('touchend', () => {
-        mouse.x = -1000;
-        mouse.y = -1000;
+        mouse.x = null;
+        mouse.y = null;
     });
 
     // Reset on click/tap
