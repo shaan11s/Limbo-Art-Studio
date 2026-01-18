@@ -214,10 +214,21 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     };
 
     function setupCanvas() {
-        const rect = field.getBoundingClientRect();
-        // Round to nearest pixel size to avoid gaps (like your working version)
-        canvas.width = Math.floor(rect.width / pixelSize) * pixelSize;
-        canvas.height = Math.floor(rect.height / pixelSize) * pixelSize;
+        const maxWidth = field.getBoundingClientRect().width;
+        const maxHeight = field.getBoundingClientRect().height;
+        const imgAspect = img.width / img.height;
+
+        let canvasWidth = maxWidth;
+        let canvasHeight = canvasWidth / imgAspect;
+
+        if (canvasHeight > maxHeight) {
+            canvasHeight = maxHeight;
+            canvasWidth = canvasHeight * imgAspect;
+        }
+
+        // Round to nearest pixel size to avoid gaps
+        canvas.width = Math.floor(canvasWidth / pixelSize) * pixelSize;
+        canvas.height = Math.floor(canvasHeight / pixelSize) * pixelSize;
     }
 
     function createLimboMask() {
@@ -242,44 +253,28 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     function createParticles() {
         particles = [];
 
-        // Draw image to temporary canvas to sample pixels
-        const tempCanvas = document.createElement('canvas');
-        const tempCtx = tempCanvas.getContext('2d');
-
-        // Size of the artwork in the canvas
-        const artSize = Math.min(canvas.width, canvas.height) * 0.9;
-        tempCanvas.width = artSize;
-        tempCanvas.height = artSize;
-
-        tempCtx.drawImage(img, 0, 0, artSize, artSize);
-        const imageData = tempCtx.getImageData(0, 0, artSize, artSize);
+        // Draw image to canvas to sample pixels
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
         // Sample pixels to create particles
-        for (let y = 0; y < artSize; y += pixelSize) {
-            for (let x = 0; x < artSize; x += pixelSize) {
+        for (let y = 0; y < canvas.height; y += pixelSize) {
+            for (let x = 0; x < canvas.width; x += pixelSize) {
                 // Sample from center of each pixel block for better color accuracy
-                const sampleX = Math.min(x + Math.floor(pixelSize / 2), artSize - 1);
-                const sampleY = Math.min(y + Math.floor(pixelSize / 2), artSize - 1);
-                const index = (sampleY * artSize + sampleX) * 4;
-                const alpha = imageData.data[index + 3];
+                const sampleX = Math.min(x + Math.floor(pixelSize / 2), canvas.width - 1);
+                const sampleY = Math.min(y + Math.floor(pixelSize / 2), canvas.height - 1);
+                const index = (sampleY * canvas.width + sampleX) * 4;
+                const r = imageData.data[index];
+                const g = imageData.data[index + 1];
+                const b = imageData.data[index + 2];
 
-                // Only create particle if pixel is not transparent
-                if (alpha > 50) {
-                    const r = imageData.data[index];
-                    const g = imageData.data[index + 1];
-                    const b = imageData.data[index + 2];
-
-                    const screenX = (canvas.width - artSize) / 2 + x;
-                    const screenY = (canvas.height - artSize) / 2 + y;
-
-                    particles.push({
-                        x: screenX,
-                        y: screenY,
-                        color: `rgb(${r}, ${g}, ${b})`,
-                        size: pixelSize,
-                        erased: false
-                    });
-                }
+                particles.push({
+                    x: x,
+                    y: y,
+                    color: `rgb(${r}, ${g}, ${b})`,
+                    size: pixelSize,
+                    erased: false
+                });
             }
         }
     }
