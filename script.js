@@ -184,6 +184,8 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
     let particles = [];
     let mouse = { x: -1000, y: -1000 };
     let limboMask = null;
+    let displayWidth = 0;
+    let displayHeight = 0;
 
     // Array of artwork images
     // HEY THE HOME PAGE PIXEL ERASER THINGY IS HERE
@@ -217,29 +219,33 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
 
     function setupCanvas() {
         const rect = field.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
+        const dpr = window.devicePixelRatio || 1;
+        displayWidth = rect.width;
+        displayHeight = rect.height;
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+        canvas.style.width = displayWidth + 'px';
+        canvas.style.height = displayHeight + 'px';
+        ctx.scale(dpr, dpr);
     }
 
     function createLimboMask() {
         // Create a canvas with "LIMBO" text
         const maskCanvas = document.createElement('canvas');
         const maskCtx = maskCanvas.getContext('2d');
-        maskCanvas.width = canvas.width;
-        maskCanvas.height = canvas.height;
+        maskCanvas.width = displayWidth;
+        maskCanvas.height = displayHeight;
 
         // Draw "LIMBO" text
         maskCtx.fillStyle = '#ffffff';
-        const fontSize = Math.min(canvas.width, canvas.height) * 0.25;
+        const fontSize = Math.min(displayWidth, displayHeight) * 0.25;
         maskCtx.font = `bold ${fontSize}px Arial, sans-serif`;
         maskCtx.textAlign = 'center';
         maskCtx.textBaseline = 'middle';
-        maskCtx.fillText('LIMBO', canvas.width / 2, canvas.height / 2);
+        maskCtx.fillText('LIMBO', displayWidth / 2, displayHeight / 2);
 
         // Get pixel data
-        limboMask = maskCtx.getImageData(0, 0, canvas.width, canvas.height);
+        limboMask = maskCtx.getImageData(0, 0, displayWidth, displayHeight);
     }
 
     function createParticles() {
@@ -250,7 +256,7 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
         const tempCtx = tempCanvas.getContext('2d');
 
         // Size of the artwork in the canvas
-        const artSize = Math.min(canvas.width, canvas.height) * 0.9;
+        const artSize = Math.min(displayWidth, displayHeight) * 0.9;
         tempCanvas.width = artSize;
         tempCanvas.height = artSize;
 
@@ -269,8 +275,8 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
                     const g = imageData.data[index + 1];
                     const b = imageData.data[index + 2];
 
-                    const screenX = (canvas.width - artSize) / 2 + x;
-                    const screenY = (canvas.height - artSize) / 2 + y;
+                    const screenX = (displayWidth - artSize) / 2 + x;
+                    const screenY = (displayHeight - artSize) / 2 + y;
 
                     particles.push({
                         x: screenX,
@@ -288,14 +294,14 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
         if (!limboMask) return false;
         const px = Math.floor(x);
         const py = Math.floor(y);
-        if (px < 0 || px >= canvas.width || py < 0 || py >= canvas.height) return false;
+        if (px < 0 || px >= displayWidth || py < 0 || py >= displayHeight) return false;
 
-        const index = (py * canvas.width + px) * 4;
+        const index = (py * displayWidth + px) * 4;
         return limboMask.data[index] > 128; // White pixel = part of text
     }
 
     function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, displayWidth, displayHeight);
 
         particles.forEach(p => {
             if (!p.erased) {
