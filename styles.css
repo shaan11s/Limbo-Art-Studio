@@ -141,7 +141,7 @@ main {
 }
 
 /* Canvas for pixel effect */
-.apple-field canvas {
+#pixelCanvas {
     display: block;
     cursor: crosshair;
     touch-action: none;

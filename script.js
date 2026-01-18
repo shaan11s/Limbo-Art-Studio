@@ -169,13 +169,11 @@ https://docs.google.com/spreadsheets/d/1kT1PrkvdGK6DrQ74_F0CktXWppVn2xSxcwtMDnH8
 
 // Interactive Pixel Eraser to Reveal "LIMBO" (Home Page)
 (function initPixelEraser() {
-    const field = document.getElementById('appleField');
-    if (!field) return;
+    const canvas = document.getElementById('pixelCanvas');
+    if (!canvas) return;
 
-    const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    field.innerHTML = '';
-    field.appendChild(canvas);
+    const field = canvas.parentElement;
 
     // Configuration
     const pixelSize = 12;
