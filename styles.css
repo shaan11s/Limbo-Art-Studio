@@ -113,7 +113,8 @@ main {
 /* Apple field responsive sizing for mobile */
 @media (max-width: 768px) {
   .apple-field {
-    height: 500px;
+    height: calc(100vh - 56px);
+    margin-top: 56px;
   }
 }
 
@@ -127,17 +128,12 @@ main {
 
 /* The big rectangle window */
 .apple-field{
-    width: min(1100px, 90vw);
-    height: 720px;
-    margin: 0 auto;
-
-    border-radius: 18px;
-    overflow: hidden;
-    background: #ffffff;
-
+    width: 100%;
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 /* Canvas for pixel effect */
