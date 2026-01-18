@@ -143,6 +143,8 @@ main {
 /* Canvas for pixel effect */
 .apple-field canvas {
     display: block;
+    cursor: crosshair;
+    touch-action: none;
 }
 
 /* Info Page */
